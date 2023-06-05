@@ -52,7 +52,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const modelsResponse = await fetch(`http://localhost:3002/api/ml/getModelByID/${context?.params?.slug}`);
+    const SERVER_URL = process.env.NODE_ENV === "development" ? process.env.DEV_SERVER_URL : process.env.PROD_SERVER_URL;
+    const modelsResponse = await fetch(`${SERVER_URL}/api/ml/getModelByID/${context?.params?.slug}`);
     const modelsData = await modelsResponse.json();
     return {
         props: { modelData: !modelsData?.error ? modelsData?.data : "Error" },
