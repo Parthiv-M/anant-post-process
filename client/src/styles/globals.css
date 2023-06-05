@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-colour: #0E2C48;
+  --text-colour: #FEFFFF;
+  --secondary-text-colour: #ABABAB;
+  --accent-colour-light: #9DD0FF;
+  --accent-colour-dark: #0A2742;
+  --primary-dark: #1E1E1E;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background-colour);
+  color: var(--text-colour);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.inter {
+  font-family: var(--inter-font);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+footer {
+  background-color: var(--accent-colour-dark);
+}
