@@ -6,7 +6,7 @@ const ModelCard = (props: { modelData: any, modelSelected: string, setMaterialSe
     const handleClick = (name: string, materialId: string, modelId: string) => {
         props?.setMaterialSelected(name);
         router.push({
-            pathname: `/models/${materialId}/${modelId}`
+            pathname: `/postprocess/models/${materialId}/${modelId}`
         });
     }
     return (
