@@ -18,7 +18,7 @@ const ModelsByMaterial = (props: any) => {
                 </div>
                 <div className='grid grid-cols-3 gap-2 mt-4 px-3'>
                     {
-                        props?.data.map((model: any) => {
+                        props?.data && props?.data.map((model: any) => {
                             return <ModelCard
                                 modelData={model}
                                 modelSelected={modelSelected}
@@ -48,8 +48,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const SERVER_URL = process.env.NODE_ENV === "development" ? process.env.DEV_SERVER_URL : process.env.PROD_SERVER_URL ;
-    const modelsResponse = await fetch(`${SERVER_URL}/api/ml/getModelsByMaterial/${context?.params?.material}`);
+    console.log("context: ", context.params)
+    const modelsResponse = await fetch(`${SERVER_URL}/api/ml/getModelsByMaterial/?materialID=${context?.params?.material}`);
     const modelsData = await modelsResponse.json();
+    console.log("context data: ", modelsData)
     return {
         props: { data: !modelsData?.error ? modelsData?.data : "No data" },
     }
