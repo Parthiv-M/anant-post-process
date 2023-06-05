@@ -20,7 +20,8 @@ async function connectToDB() {
             useUnifiedTopology: true,
             bufferCommands: false,
         }
-
+	
+	mongoose.set("strictQuery", false);	
         cached.promise = await mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
             console.log("MongoDB connected successfully");
             return mongoose
