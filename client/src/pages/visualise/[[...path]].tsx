@@ -4,15 +4,13 @@ import { useEffect, useState } from "react";
 
 const VisualiseData = (props: any) => {
 
-    const SERVER_URL = process.env.NODE_ENV === "development" ? process.env.DEV_SERVER_URL : process.env.PROD_SERVER_URL ;
-
     const [columnData, setColumnData] = useState(null);
     const [selectedColumn, setSelectedColumn] = useState("");
     const [loading, setLoading] = useState(false);
 
     const getColumnData = async (featureName: string) => {
         try {
-            const columnRes = await fetch(`${SERVER_URL}/api/analytics/getcolumndata/63fdc7e7ae2b5c97179d08f1/${featureName}`);
+            const columnRes = await fetch(`${props?.serverUrl}/api/analytics/getcolumndata/${props?.modelId}/${featureName}`);
             const columnDataFromDataset = await columnRes.json();
             setColumnData(columnDataFromDataset?.data);
             setLoading(false);
@@ -79,11 +77,14 @@ const VisualiseData = (props: any) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const modelResp = await fetch(`http://localhost:3002/api/ml/getModelById/${context.query.path![0]}`);
+    const SERVER_URL = process.env.NODE_ENV === "development" ? process.env.DEV_SERVER_URL : process.env.PROD_SERVER_URL ;
+    const modelResp = await fetch(`${SERVER_URL}/api/ml/getModelById/${context.query.path![0]}`);
     const modelData = await modelResp.json();
     return {
         props: {
-            modelData: modelData.data ? modelData.data : "Error"
+            modelData: modelData.data ? modelData.data : "Error",
+            modelId: context.query.path![0],
+            serverUrl: SERVER_URL
         }
     }
 }
