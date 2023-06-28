@@ -2,9 +2,13 @@ const ModelTile = (props: any) => {
     return (
         <div className={`
                 rounded-lg hover:bg-black/30 hover:cursor-pointer border mt-2
-                ${props?.model?._id === props?.selectedModel ? "border-black/40 bg-black/30" : "border-transparent bg-black/20"}
-            `}
-            onClick={() => props?.setSelectedModel(props?.model?._id)}
+                ${props?.model?.modelName === "Yield Strength Model" ? (props?.model?._id === props?.selectedModel ? "border-black/40 bg-black/30" : "border-transparent bg-black/20") : "bg-black/20 border-transparent hover:bg-black/20 opacity-50 cursor-not-allowed"}`
+        }
+            onClick={() => {
+                if (props?.model?.modelName === "Yield Strength Model") {
+                    props?.setSelectedModel(props?.model?._id)
+                }
+            }}
         >
             <div className='h-full flex flex-col justify-between p-2'>
                 <h5 className='font-bold'>{props?.model?.modelName}</h5>

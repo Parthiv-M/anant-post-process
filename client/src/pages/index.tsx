@@ -7,8 +7,15 @@ export default function Home() {
         <img className='rounded-lg' width={450} src='/postprocess/assets/images/postProcessingLogo.png' />
         <div className='flex flex-col justify-between'>
           <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex</p>
+            <p>
+              The post processing utility contains two main functionalities—the ability to test out ML models and
+              the power to visualise the datasets used to train the ML models.
+            </p>
+            <p className='mt-2'>
+              Consisting of models that cater to a variety of materials, this tool can be used to predict and optimise
+              various properties of materials. This cna eventually help in a better selection of materials for various 
+              applications.
+            </p>
           </div>
           <Link href='/materials'>
             <button className='bg-neutral-900 px-3 py-3 w-full rounded-lg mt-4 md:mt-auto'>
